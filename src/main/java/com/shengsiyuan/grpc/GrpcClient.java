@@ -1,11 +1,11 @@
 package com.shengsiyuan.grpc;
 
 
-import com.shengsiyuan.proto.MyRequest;
-import com.shengsiyuan.proto.MyResponse;
-import com.shengsiyuan.proto.StudentServiceGrpc;
+import com.shengsiyuan.proto.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+
+import java.util.Iterator;
 
 public class GrpcClient {
 
@@ -17,5 +17,17 @@ public class GrpcClient {
         MyResponse myResponse = blockingStub.getRealNameByUsername(MyRequest.newBuilder().setUsername("张三").build());
 
         System.out.println(myResponse.getRealname());
+
+        System.out.println("-----------------------------");
+
+        Iterator<StudentResponse> iterator = blockingStub.getStudentsByAge(StudentRequest.newBuilder().setAge(20).build());
+
+        while (iterator.hasNext()) {
+            StudentResponse studentResponse = iterator.next();
+
+            System.out.println(studentResponse.getName() + ", " + studentResponse.getAge() + ", " + studentResponse.getCity());
+        }
+
+        System.out.println("-----------------------------");
     }
 }
