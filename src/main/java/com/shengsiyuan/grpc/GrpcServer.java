@@ -19,6 +19,7 @@ public class GrpcServer {
 
         System.out.println("server started!!!");
 
+        //jvm回调钩子
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             System.out.println("关闭JVM");
             GrpcServer.this.stop();

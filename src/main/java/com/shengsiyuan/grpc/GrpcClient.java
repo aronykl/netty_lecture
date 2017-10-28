@@ -18,13 +18,13 @@ public class GrpcClient {
 
         StudentServiceGrpc.StudentServiceStub stub = StudentServiceGrpc.newStub(managedChannel);
 
-        /*MyResponse myResponse = blockingStub.getRealNameByUsername(MyRequest.newBuilder().setUsername("张三").build());
+        MyResponse myResponse = blockingStub.getRealNameByUsername(MyRequest.newBuilder().setUsername("张三").build());
 
         System.out.println(myResponse.getRealname());
 
         System.out.println("-----------------------------");
 
-        Iterator<StudentResponse> iterator = blockingStub.getStudentsByAge(StudentRequest.newBuilder().setAge(20).build());
+        /*Iterator<StudentResponse> iterator = blockingStub.getStudentsByAge(StudentRequest.newBuilder().setAge(20).build());
 
         while (iterator.hasNext()) {
             StudentResponse studentResponse = iterator.next();
@@ -63,7 +63,7 @@ public class GrpcClient {
         studentRequestStreamObserver.onNext(StudentRequest.newBuilder().setAge(40).build());
         studentRequestStreamObserver.onNext(StudentRequest.newBuilder().setAge(50).build());
 
-        studentRequestStreamObserver.onCompleted();*/
+        studentRequestStreamObserver.onCompleted();
 
         StreamObserver<StreamRequest> requestStreamObserver = stub.biTalk(new StreamObserver<StreamResponse>() {
             @Override
@@ -96,7 +96,7 @@ public class GrpcClient {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
     }
